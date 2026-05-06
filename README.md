@@ -145,5 +145,6 @@ CP2-IOT/
 
 ## Autor
 
-Nathan Gonçalves Pereira Mendes
-RM564666 — FIAP
+Nathan Gonçalves Pereira Mendes e 
+João Pedro Bitencourt Goldoni
+RM564666 — Rm564339
