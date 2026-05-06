@@ -1,0 +1,1111 @@
+[
+    {
+        "id": "72c7cdedf43b6708",
+        "type": "tab",
+        "label": "Monitoramento IoT",
+        "disabled": false,
+        "info": "Projeto IoT - ESP32 + MQTT + OpenWeather + MySQL"
+    },
+    {
+        "id": "broker_hivemq",
+        "type": "mqtt-broker",
+        "name": "HiveMQ Público",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "nodered-estufa-client",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "mysql_config",
+        "type": "MySQLdatabase",
+        "name": "Estufa DB",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "estufa_db",
+        "tz": ""
+    },
+    {
+        "id": "ui_tab_estufa",
+        "type": "ui_tab",
+        "name": "🌱 Estufa IoT",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "grp_gauges",
+        "type": "ui_group",
+        "name": "Sensores em Tempo Real",
+        "tab": "ui_tab_estufa",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "grp_charts",
+        "type": "ui_group",
+        "name": "Histórico (última hora)",
+        "tab": "ui_tab_estufa",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "grp_api",
+        "type": "ui_group",
+        "name": "🌤️ Clima Externo (OpenWeatherMap)",
+        "tab": "ui_tab_estufa",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "2fd66b0e9983523f",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "tls_hivemq",
+        "type": "tls-config",
+        "name": "TLS HiveMQ",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "",
+        "servername": "",
+        "verifyservercert": false,
+        "alpnprotocol": ""
+    },
+    {
+        "id": "ui_tab_iot",
+        "type": "ui_tab",
+        "name": "Monitoramento IoT",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ui_group_sensores",
+        "type": "ui_group",
+        "name": "Sensores",
+        "tab": "ui_tab_iot",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "ui_group_graficos",
+        "type": "ui_group",
+        "name": "Gráficos",
+        "tab": "ui_tab_iot",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "ui_group_alertas",
+        "type": "ui_group",
+        "name": "Alertas",
+        "tab": "ui_tab_iot",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "ui_group_api",
+        "type": "ui_group",
+        "name": "API Externa",
+        "tab": "ui_tab_iot",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "mqtt_broker_hivemq",
+        "type": "mqtt-broker",
+        "name": "HiveMQ CP2",
+        "broker": "e87da602f2e74791b4cab3561c999eef.s1.eu.hivemq.cloud",
+        "port": "8883",
+        "tls": "tls_hivemq",
+        "clientid": "node_red_cp2_iot_564339_2",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "tls_hivemq_sqlite",
+        "type": "tls-config",
+        "name": "TLS HiveMQ",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "",
+        "servername": "",
+        "verifyservercert": false,
+        "alpnprotocol": ""
+    },
+    {
+        "id": "broker_hivemq_sqlite",
+        "type": "mqtt-broker",
+        "name": "HiveMQ CP2",
+        "broker": "635ca0c906b14794a5627bd17a86bc72.s1.eu.hivemq.cloud",
+        "port": "8883",
+        "tls": "tls_hivemq_sqlite",
+        "clientid": "node_red_cp2_564339_sqlite",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "ui_tab_cp2_sqlite",
+        "type": "ui_tab",
+        "name": "Monitoramento IoT",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ui_group_sensores_sqlite",
+        "type": "ui_group",
+        "name": "Sensores",
+        "tab": "ui_tab_cp2_sqlite",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "ui_group_graficos_sqlite",
+        "type": "ui_group",
+        "name": "Gráficos em Tempo Real",
+        "tab": "ui_tab_cp2_sqlite",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "ui_group_alertas_sqlite",
+        "type": "ui_group",
+        "name": "Alertas",
+        "tab": "ui_tab_cp2_sqlite",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "ui_group_api_sqlite",
+        "type": "ui_group",
+        "name": "API Externa",
+        "tab": "ui_tab_cp2_sqlite",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "ui_group_banco_sqlite",
+        "type": "ui_group",
+        "name": "Banco de Dados",
+        "tab": "ui_tab_cp2_sqlite",
+        "order": 5,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "sqlite_db_cp2",
+        "type": "sqlitedb",
+        "db": "monitoramento_iot.db",
+        "mode": "RWC"
+    },
+    {
+        "id": "c4627c0c4b08c38d",
+        "type": "mqtt-broker",
+        "name": "Public MQTT",
+        "broker": "broker.hivemq.com",
+        "port": "1883"
+    },
+    {
+        "id": "e30774a668dbcddd",
+        "type": "sqlitedb",
+        "db": "monitoramento.db"
+    },
+    {
+        "id": "ba4c929956c3deb8",
+        "type": "mqtt-broker",
+        "name": "HiveMQ Publico",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "node_red_cp2_publico_564339_final",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "83011a43025b7322",
+        "type": "sqlitedb",
+        "db": "monitoramento_iot.db",
+        "mode": "RWC"
+    },
+    {
+        "id": "1d32199d9a476979",
+        "type": "ui_tab",
+        "name": "Monitoramento IoT",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "f2277c7f1de795b1",
+        "type": "ui_group",
+        "name": "Sensores",
+        "tab": "1d32199d9a476979",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "76eb75d913c4e906",
+        "type": "ui_group",
+        "name": "Gráficos",
+        "tab": "1d32199d9a476979",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "e6099550079d17f7",
+        "type": "ui_group",
+        "name": "Alertas",
+        "tab": "1d32199d9a476979",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "3f11270e7a1ad088",
+        "type": "ui_group",
+        "name": "API Externa",
+        "tab": "1d32199d9a476979",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "d5b785f7bf6e1772",
+        "type": "ui_group",
+        "name": "Banco de Dados",
+        "tab": "1d32199d9a476979",
+        "order": 5,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "mqtt_broker_01",
+        "type": "mqtt-broker",
+        "name": "HiveMQ Publico",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "db_config_01",
+        "type": "MySQLdatabase",
+        "name": "iot_projeto",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "iot_projeto",
+        "tz": "local",
+        "charset": ""
+    },
+    {
+        "id": "ui_tab_01",
+        "type": "ui_tab",
+        "name": "Monitor IoT",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "grp_sensores",
+        "type": "ui_group",
+        "name": "Sensores Locais (ESP32)",
+        "tab": "ui_tab_01",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "grp_clima",
+        "type": "ui_group",
+        "name": "Clima Externo - OpenWeather",
+        "tab": "ui_tab_01",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "grp_historico",
+        "type": "ui_group",
+        "name": "Historico de Leituras",
+        "tab": "ui_tab_01",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "007e40f07703978f",
+        "type": "mqtt-broker",
+        "name": "HiveMQ Publico",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true
+    },
+    {
+        "id": "b252d4ad5f9b66f6",
+        "type": "sqlitedb",
+        "db": "/home/nathan/estufa_cp2.db",
+        "mode": "RWC"
+    },
+    {
+        "id": "b23ecd4a4bf4b388",
+        "type": "ui_tab",
+        "name": "Monitoramento IoT",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "c786ccba4e202847",
+        "type": "ui_group",
+        "name": "Gráficos em Tempo Real",
+        "tab": "b23ecd4a4bf4b388",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "4d6716f0fe3f80bc",
+        "type": "ui_group",
+        "name": "Alertas",
+        "tab": "b23ecd4a4bf4b388",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "7d4808ca78524fd4",
+        "type": "ui_group",
+        "name": "Banco de Dados",
+        "tab": "b23ecd4a4bf4b388",
+        "order": 5,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "a6daf116602b2a03",
+        "type": "mqtt-broker",
+        "name": "HiveMQ Publico",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true
+    },
+    {
+        "id": "87ad83e1b8290ee5",
+        "type": "sqlitedb",
+        "db": "/home/nathan/estufa_cp2.db",
+        "mode": "RWC"
+    },
+    {
+        "id": "befc092e7c8e5332",
+        "type": "ui_tab",
+        "name": "Monitoramento IoT",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "8146980a7a4fed81",
+        "type": "ui_group",
+        "name": "Gráficos em Tempo Real",
+        "tab": "befc092e7c8e5332",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "99e77d96d916b02a",
+        "type": "ui_group",
+        "name": "Alertas",
+        "tab": "befc092e7c8e5332",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "5568a5166cc8353d",
+        "type": "ui_group",
+        "name": "Banco de Dados",
+        "tab": "befc092e7c8e5332",
+        "order": 5,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "d4d61d837d91a438",
+        "type": "oracle-server",
+        "connectionname": "IOT",
+        "tnsname": "",
+        "connectiontype": "Classic",
+        "instantclientpath": "",
+        "host": "oracle.fiap.com.br",
+        "port": 1521,
+        "db": "ORCL",
+        "poolmin": "",
+        "poolmax": 4,
+        "pooltimeout": 60
+    },
+    {
+        "id": "dd692edcb778c4b6",
+        "type": "comment",
+        "z": "72c7cdedf43b6708",
+        "name": "=== ETAPA 1: RECEPCAO MQTT ===",
+        "info": "Recebe dados do ESP32 via MQTT broker HiveMQ",
+        "x": 160,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "2fae0af10956716a",
+        "type": "mqtt in",
+        "z": "72c7cdedf43b6708",
+        "name": "casa/temperatura",
+        "topic": "casa/temperatura",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "mqtt_broker_01",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 100,
+        "wires": [
+            [
+                "3c3dbf3d635750d3"
+            ]
+        ]
+    },
+    {
+        "id": "14c77e6772357f07",
+        "type": "mqtt in",
+        "z": "72c7cdedf43b6708",
+        "name": "casa/luminosidade",
+        "topic": "maquina1/dados",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "mqtt_broker_01",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 200,
+        "wires": [
+            [
+                "1859745ccefdc8f5"
+            ]
+        ]
+    },
+    {
+        "id": "fa8e6d30b8cc9f72",
+        "type": "comment",
+        "z": "72c7cdedf43b6708",
+        "name": "=== ETAPA 2: PROCESSAMENTO ===",
+        "info": "Converte payload string para numero e salva em contexto",
+        "x": 400,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "3c3dbf3d635750d3",
+        "type": "function",
+        "z": "72c7cdedf43b6708",
+        "name": "Parse Temperatura",
+        "func": "var data = msg.payload;\nif (typeof data === 'string') data = JSON.parse(data);\nvar val = Number(data.temperatura);\nif (isNaN(val)) return null;\nflow.set('ultima_temp', val);\nmsg.payload = val;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 100,
+        "wires": [
+            [
+                "e7e9108d6d5c90b0",
+                "adb9049e7f23640e",
+                "4b8b863566f324b0"
+            ]
+        ]
+    },
+    {
+        "id": "1859745ccefdc8f5",
+        "type": "function",
+        "z": "72c7cdedf43b6708",
+        "name": "Parse Luminosidade",
+        "func": "var data = msg.payload;\nif (typeof data === 'string') data = JSON.parse(data);\nvar val = Number(data.luminosidade);\nif (isNaN(val)) return null;\nflow.set('ultima_luz', val);\nmsg.payload = val;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 200,
+        "wires": [
+            [
+                "e7377bfeefdeec45",
+                "7654855d790ad4e3"
+            ]
+        ]
+    },
+    {
+        "id": "e959e39757f52f4d",
+        "type": "comment",
+        "z": "72c7cdedf43b6708",
+        "name": "=== ETAPA 3: DASHBOARD ===",
+        "info": "Exibe dados no painel visual",
+        "x": 620,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "e7e9108d6d5c90b0",
+        "type": "ui_gauge",
+        "z": "72c7cdedf43b6708",
+        "name": "Gauge Temperatura",
+        "group": "grp_sensores",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "🌡️ Temperatura",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 50,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": 20,
+        "seg2": 35,
+        "className": "",
+        "x": 610,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "e7377bfeefdeec45",
+        "type": "ui_gauge",
+        "z": "72c7cdedf43b6708",
+        "name": "Gauge Luminosidade",
+        "group": "grp_sensores",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "💡 Luminosidade",
+        "label": "ADC",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 4095,
+        "colors": [
+            "#000099",
+            "#e6e600",
+            "#ff8800"
+        ],
+        "seg1": 1000,
+        "seg2": 3000,
+        "className": "",
+        "x": 610,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "adb9049e7f23640e",
+        "type": "ui_chart",
+        "z": "72c7cdedf43b6708",
+        "name": "Grafico Temperatura",
+        "group": "grp_historico",
+        "order": 1,
+        "width": 0,
+        "height": 4,
+        "label": "🌡️ Temperatura ao longo do tempo (°C)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Aguardando dados do ESP32...",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": 1,
+        "removeOlderPoints": "60",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#ff4444",
+            "#aec6cf",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 610,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7654855d790ad4e3",
+        "type": "ui_chart",
+        "z": "72c7cdedf43b6708",
+        "name": "Grafico Luminosidade",
+        "group": "grp_historico",
+        "order": 2,
+        "width": 0,
+        "height": 4,
+        "label": "💡 Luminosidade ao longo do tempo (ADC)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Aguardando dados do ESP32...",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "4095",
+        "removeOlder": 1,
+        "removeOlderPoints": "60",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#ffaa00",
+            "#aec6cf",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 610,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "90225a897939499d",
+        "type": "comment",
+        "z": "72c7cdedf43b6708",
+        "name": "=== ETAPA 4: API OPENWEATHER ===",
+        "info": "Busca dados climaticos externos a cada 5 minutos",
+        "x": 180,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "45f24f72be2f3bbe",
+        "type": "inject",
+        "z": "72c7cdedf43b6708",
+        "name": "Buscar Clima (5 min)",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "300",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "2",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 500,
+        "wires": [
+            [
+                "2385b5ae8cd8e173"
+            ]
+        ]
+    },
+    {
+        "id": "2385b5ae8cd8e173",
+        "type": "http request",
+        "z": "72c7cdedf43b6708",
+        "name": "OpenWeather API",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.openweathermap.org/data/2.5/weather?q=Sao+Paulo,BR&appid=700420f7079b9a578e7af90dd53aee07&units=metric&lang=pt_br",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 360,
+        "y": 500,
+        "wires": [
+            [
+                "017c7ce007dc9b1a"
+            ]
+        ]
+    },
+    {
+        "id": "017c7ce007dc9b1a",
+        "type": "function",
+        "z": "72c7cdedf43b6708",
+        "name": "Formatar Clima",
+        "func": "var d = msg.payload;\n\n// Verifica se a API retornou dados validos\nif (!d || !d.main) {\n    node.warn('Resposta invalida da API OpenWeather: ' + JSON.stringify(d));\n    msg.payload = 'Erro ao buscar clima. Verifique sua chave da API.';\n    return msg;\n}\n\n// Capitaliza primeira letra\nvar cap = function(s) {\n    return s.charAt(0).toUpperCase() + s.slice(1);\n};\n\nvar linha1 = '🌡️ Temperatura: ' + d.main.temp + '°C';\nvar linha2 = '🌡️ Sensacao termica: ' + d.main.feels_like + '°C';\nvar linha3 = '🌤️ ' + cap(d.weather[0].description);\nvar linha4 = '💧 Umidade: ' + d.main.humidity + '%';\nvar linha5 = '💨 Vento: ' + d.wind.speed + ' m/s';\nvar linha6 = '📍 ' + d.name;\n\nmsg.payload = linha1 + '\\n' + linha2 + '\\n' + linha3 + '\\n' + linha4 + '\\n' + linha5 + '\\n' + linha6;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 500,
+        "wires": [
+            [
+                "c1912f7b250ad24b"
+            ]
+        ]
+    },
+    {
+        "id": "c1912f7b250ad24b",
+        "type": "ui_text",
+        "z": "72c7cdedf43b6708",
+        "group": "grp_clima",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Texto Clima",
+        "label": "🌦️ Clima em São Paulo",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 14,
+        "color": "#ffffff",
+        "x": 760,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "87e67e1e5270e59e",
+        "type": "comment",
+        "z": "72c7cdedf43b6708",
+        "name": "=== ETAPA 5: BANCO DE DADOS MYSQL ===",
+        "info": "Salva leituras dos sensores no MySQL local",
+        "x": 200,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "4b8b863566f324b0",
+        "type": "function",
+        "z": "72c7cdedf43b6708",
+        "name": "Preparar INSERT SQL",
+        "func": "var temp = flow.get('ultima_temp');\nvar luz = flow.get('ultima_luz');\nif (temp === undefined && luz === undefined) return null;\n\nmsg.query = \"INSERT INTO leituras (sensor, valor) VALUES (:1, :2)\";\nmsg.params = [msg.topic === 'temperatura' ? 'temperatura' : 'luminosidade', msg.payload];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 660,
+        "wires": [
+            [
+                "b019d3c702e8c6f9"
+            ]
+        ]
+    },
+    {
+        "id": "9c0b0d0b4ff6825e",
+        "type": "debug",
+        "z": "72c7cdedf43b6708",
+        "name": "Debug MySQL",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "b019d3c702e8c6f9",
+        "type": "oracledb",
+        "z": "72c7cdedf43b6708",
+        "name": "",
+        "usequery": false,
+        "query": "INSERT INTO leituras (sensor, valor) VALUES (:1, :2)",
+        "usemappings": false,
+        "mappings": "[\n\t\"location.of.first.array.index.field.in.msg.payload\",\n\t\"location.of.second.array.index.field\",\n\t\"last_array_indexfield.in[3]\"\n]",
+        "server": "d4d61d837d91a438",
+        "resultaction": "multi",
+        "resultlimit": 100,
+        "x": 580,
+        "y": 660,
+        "wires": [
+            [
+                "9c0b0d0b4ff6825e"
+            ]
+        ]
+    },
+    {
+        "id": "313ac8aeee6ee5e1",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-node-mysql": "3.0.0",
+            "node-red-dashboard": "3.6.6",
+            "node-red-node-sqlite": "2.0.1",
+            "node-red-contrib-oracledb-mod": "0.7.6"
+        }
+    }
+]
