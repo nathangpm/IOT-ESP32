@@ -142,6 +142,8 @@ CP2-IOT/
 ```
 
 ---
+## Video Do Projeto
+https://youtu.be/ouP0LZseFQo
 
 ## Autor
 
